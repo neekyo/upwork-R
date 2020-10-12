@@ -21,9 +21,3 @@ require('./routes/authRoutes')(app);
 app.listen(5000, () => {
 	console.log('Listening on 5000');
 });
-app.use(
-	cookieSession({
-		maxAge: 30 * 24 * 60 * 60 * 1000,
-		keys: [ keys.cookieKey ]
-	})
-);
