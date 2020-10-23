@@ -1,17 +1,27 @@
-import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import Home from './Home';
+import React, { Component } from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
 import Header from './Header';
+import Home from './Home';
 
-const App = () => {
-	return (
-		<BrowserRouter>
-			<React.Fragment>
-				<Header />
-				<Home />
-			</React.Fragment>
-		</BrowserRouter>
-	);
-};
+class App extends Component {
+	componentDidMount() {
+		this.props.fetchUser();
+	}
 
-export default App;
+	render() {
+		return (
+			<BrowserRouter>
+				<React.Fragment>
+					<div className="container-fluid">
+						<Header />
+						<Route exact path="/" component={Home} />
+					</div>
+				</React.Fragment>
+			</BrowserRouter>
+		);
+	}
+}
+
+export default connect(null, actions)(App);
