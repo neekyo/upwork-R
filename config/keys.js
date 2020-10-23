@@ -1,7 +1,5 @@
-module.exports = {
-	googleClientID: '',
-	googleClientSecret: '',
-	mongoURI: '',
-	cookieKey: '3hr32ewhfidsasdsdad',
-	redirectDomain: 'https://dani-app.herokuapp.com'
-};
+if (process.env.NODE_ENV === 'production') {
+	module.exports = require('./prod');
+} else {
+	module.exports = require('./dev');
+}
